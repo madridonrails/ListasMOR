@@ -1,0 +1,7 @@
+page.replace "div_for_task_#{@task.id}", ''
+if @task.closed?
+  page.insert_html :top, 'closed_task_ids', :partial => 'task_item', :locals=>{:write_access=>true, :task_item=>@task}
+else
+  page.insert_html :bottom, 'open_task_ids', :partial => 'task_item', :locals=>{:write_access=>true, :task_item=>@task}
+end
+page.visual_effect :highlight, "div_for_task_#{@task.id}", :queue => 'end'

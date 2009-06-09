@@ -1,0 +1,38 @@
+<%form_tag({},{:id=>'search_form'})do -%>
+<div id="search_criteria">
+	<table>
+		<tr>
+			<td>
+				<span class="Title16Grey"><%=local_html(:search,:search_text)%></span>			
+			</td>
+			<td>
+				<%=text_field_tag :text_to_search, @text_to_search, :size=>'20', :maxlength=>'250' -%>
+				<%if logged_in? -%>
+			    	<span class="Text12Grey"><%=local_html(:search,:local_search)%> <%=check_box_tag(:local_search, "1", @local_search) -%></span>
+				<%end -%>			
+			</td>
+		</tr>	
+		<tr>
+			<td>
+				<span class="Title16Grey"><%=local_html(:global,:tags)%></span>		
+			</td>
+			<td>
+				<%=text_field_tag :tag_list, @tag_list, :size=>'20', :maxlength=>'250' -%>
+				<%=image_submit_tag('ver-detalle.gif', options = {:title=>local_html(:search,:search),:border=>0, :align=>'absmiddle',:class=>"Link12Grey"})%>			
+			</td>
+		</tr>  
+  
+	</table>
+</div>
+<%end #form -%>
+
+<%unless @text_to_search.blank? && @tag_list.blank?%>
+	<div class="Title16Orange" id="TodasTitulo"><%=local_html(:search,:results)%></div>
+		
+	<%@lists_array.each do |list_result| -%>
+		  <span class='Text13Orange'>
+		      <strong><%=link_to list_result[:name],:action=>'tasks', :id=>list_result[:id]%></strong><BR/>
+		  </span>			
+	<%end -%>
+<%end -%>
+

@@ -1,0 +1,64 @@
+    <!--<p class="Link14Greybold"><%=local_html :signup, :fill_in_the_form%></p>-->
+    <div id="textareaRegister">
+    <p class="error">
+	<%=error_messages_for_with_localization(:user,:language=>get_local_language)%>
+    </p>
+   <% form_tag do -%>
+    
+      <p class="Title18Grey"><%= APP_NAME %>: más fácil imposible</p>
+      <p class="Text13Grey">
+        Sólo tienes que rellenar con tus datos este formulario. Los campos marcados con * son obligatorios.
+      </p>
+      <div class="Title14Orange">
+        <%= image_tag 'icon-arrow-hot.gif' %>
+        Registro gratuito
+        <div id="divider">
+          <%= image_tag 'px.gif' %>
+        </div>
+      </div><br /> 
+    <table width="500" border="0" cellspacing="0" cellpadding="0">
+      <COLGROUP>
+        <COL width="50%"/>
+        <COL width="50%"/>
+      </COLGROUP>
+      <tr>
+        <td class="Text13Grey" ><%=local_html :login, :email%> *</td>
+        <td class="Text13Grey" ><%=local_html :login, :email_confirmation%> *</td>
+      </tr> 
+      <tr>
+        <td class="Text13Grey">
+          <%= text_field :user, :email, :class => "formField" %>
+        </td>
+        <td class="Text13Grey">
+          <%= text_field :user,:email_confirmation, :class => "formField" %>
+        </td>
+      </tr>
+      <tr><td>&nbsp</td></tr>
+      <tr>
+        <td class="Text13Grey" ><%=local_html :login, :password%> *</td>
+        <td class="Text13Grey" ><%=local_html :login, :password_confirmation%> *</td>
+      </tr>
+      <tr>
+        <td class="Text13Grey">
+          <%= password_field :user, :password, :class => "formField" %>
+        </td>
+        <td class="Text13Grey">
+          <%= password_field :user, :password_confirmation, :class => "formField"%>
+        </td>
+      </tr>	  
+    </table>
+    <br />
+    <table width="500"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td>
+          <span class="CellTablebuttonL">
+            <%= submit_tag local_html(:signup, :signup_button), :class => 'button' %>
+          </span>
+        </td>
+      </tr>
+    </table>
+    <% end %>
+
+  </div>   
+   	
+

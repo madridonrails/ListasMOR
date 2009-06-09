@@ -1,0 +1,27 @@
+<ul id="tabtag">
+  <%
+    display_user_tags = logged_in? && current_user.tagged_lists.size > 0 
+    if display_user_tags -%>			
+  	<li class='active'><a class='active' id='user_tags_link' href="javascript:$('user_tags_link').up().addClassName('active');$('user_tags_link').addClassName('active');$('user_tags_div').show();$('all_tags_link').up().removeClassName('active');$('all_tags_link').removeClassName('active');$('all_tags_div').hide();void(0);" ><%=local_html(:side_menu,:my_tags)%></a></li>
+  	<li><a id='all_tags_link' href="javascript:$('all_tags_link').up().addClassName('active');$('all_tags_link').addClassName('active');$('all_tags_div').show();$('user_tags_link').up().removeClassName('active');$('user_tags_link').removeClassName('active');$('user_tags_div').hide();void(0);"><%=local_html(:side_menu,:all_tags)%></a></li>        
+  <%else -%>		
+  	<li class='active'><a class='active' id='all_tags_link' href='javascript:void(0);'><%=local_html(:side_menu,:all_tags)%></a></li>
+  <%end -%>	
+</ul>
+<div id="TagArea">
+	<div id='all_tags_div' style='display:<%=display_user_tags ? "none" : ""%>'>
+		<%cloud_tags_and_classes(nil,TaskList) do |tag,css| -%>
+	   <span class='<%=css%>'><%=link_to tag, :controller=>'task_lists',:action=>'tag_search_results', 
+	                                  :session_language=>get_local_language, :tag_list=>tag%></span>
+	  <%end -%>	
+	</div> <!--all_tags_div-->
+	
+    <%if display_user_tags -%>
+		<div id='user_tags_div'>
+	    <%cloud_tags_and_classes(current_user.id,TaskList) do |tag,css| -%>
+	     <span class='<%=css%>'><%=link_to tag, :controller=>'task_lists',:action=>'tag_search_results', 
+	                                    :session_language=>get_local_language, :tag_list=>tag, :local_search=>'1'%></span>
+	    <%end -%>	
+	  </div> <!--user_tags_div-->
+  <%end -%>
+</div>

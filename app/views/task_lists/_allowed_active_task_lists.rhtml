@@ -1,0 +1,6 @@
+	<%=render :partial=>'task_list_group', 
+           	  :locals=>{:task_list=>@allowed_open_lists, 
+        	            :title=>local_html(:task_list,:allowed_open_lists),
+						:div_for_lists=>'allowed_active_lists',
+			            :display_if_empty=>false}
+	-%>

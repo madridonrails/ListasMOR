@@ -1,0 +1,45 @@
+<%  
+  @current_task_list=current_task_list || TaskList.new  
+
+  linked_list ||= false 
+  edit_icon=icon_with_text('icon-edit.gif',local_html(:global,:edit),nil,false,'18x18')	
+  edit_handle_for_name_id = "edit_handle_for_name_#{current_task_list.id}"
+  in_place_for_name=in_place_editor_field( :current_task_list,:name, {:class=>"Link14GreyBold"},
+    {
+      :url=>url_for(:controller=>'task_lists',:action=>'set_task_list_name',:id=>current_task_list.id),
+      :rows=>2, :click_to_edit_text=>local_text(:global,:click_to_edit),
+      :save_text=>local_text(:global,:ok),:cancel_text=>local_text(:global, :cancel),:saving_text=>local_text(:global,:saving),     
+      :external_control=>edit_handle_for_name_id, :script=>true     
+      } )
+
+  edit_handle_for_tags_id = "edit_handle_for_tags_#{current_task_list.id}" 
+  in_place_for_tags=in_place_editor_field( :current_task_list,:tag_list, {:class=>"Text12Grey"},
+    {
+      :url=>url_for(:controller=>'task_lists',:action=>'set_task_list_tag_list',:id=>current_task_list.id),
+      :size=>40, :click_to_edit_text=>local_text(:global,:click_to_edit),
+      :save_text=>local_text(:global,:ok),:cancel_text=>local_text(:global, :cancel),:saving_text=>local_text(:global,:saving),     
+      :external_control=>edit_handle_for_tags_id,     
+      } )
+  
+  write_access = write_access?(@current_task_list)
+
+  if !linked_list && write_access
+-%>
+	<span id='<%=edit_handle_for_name_id%>'><%=edit_icon%></span>	
+	<span class='Link14Greybold'><%=in_place_for_name%></span>	
+		
+	<br>
+	<span id='<%=edit_handle_for_tags_id%>' class="Text12Grey"><%=edit_icon%>&nbsp;<%=local_html(:global,:tags).downcase%>:</span>
+	<span class="Text12Grey"><%=in_place_for_tags%></span>
+<% else -%>
+	<%=link_to @current_task_list.name, {:action=>'tasks', :id=>@task_list.id},:class=>'Link14Greybold'%>
+	<br>
+	<span id='<%=edit_handle_for_tags_id%>' class="Text12Grey">&nbsp;<%=local_html(:global,:tags).downcase%>:</span>
+	<span class="Text12Grey">		
+		<%total_tags=@current_task_list.tag_list.names.size
+		@current_task_list.tag_list.names.each_with_index do |tag_name,ix| %>
+			<%=link_to tag_name, {:controller=>'task_lists',:action=>'tag_search_results', 
+	                                    :session_language=>get_local_language, :tag_list=>tag_name, :local_search=>'1'},{:class=>'Text12Grey'}%><%=(ix +1)<total_tags ? ',' : '' %>							
+		<% end -%>								
+	</span>
+<% end -%>

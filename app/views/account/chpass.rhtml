@@ -1,0 +1,42 @@
+    <p class="Link14Greybold"><%=local_html :chpassword, :new_password_header%></p>
+    <p class="error"><%= flash[:notice]%></p>
+    <% form_tag :method=>:post do -%>
+	<%=hidden_field_tag :chpass_token, @chpass_token%>
+    <table width="500" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="Title16Orange" ><%=local_html :login, :password%></td>
+      </tr>
+      <tr>
+        <td class="Text13Grey">
+          <%= password_field_tag 'password', nil, :class => "formField" %>
+        </td>
+      </tr>
+    </table>
+	<BR/>
+	<table width="500" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="Title16Orange" ><%=local_html :login, :password_confirmation%></td>
+      </tr>
+      <tr>
+        <td class="Text13Grey">
+          <%= password_field_tag 'password_confirmation', nil, :class => "formField" %>
+        </td>
+      </tr>
+    </table>
+
+    <br />
+    
+    <table width="500"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td>
+          <span class="CellTablebuttonL">
+            <%= submit_tag local_html(:chpassword, :send_button), :class => 'button' %>
+          </span>
+        </td>
+      </tr>
+    </table>
+    <% end %>
+
+        
+   	
+  

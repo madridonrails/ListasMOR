@@ -1,0 +1,38 @@
+<%
+@task_list=task_list_item
+write_access = write_access?(@task_list)
+wrapper_id="div_for_task_list_#{task_list_item.id}"
+edit_icon=icon_with_text('icon-edit.gif',local_html(:global,:edit),nil,false,'18x18')
+delete_icon=icon_with_text('icon-eliminar.gif',local_html(:global,:delete),nil,false,'18x18')
+copy_icon=icon_with_text('icon-copy.gif',local_html(:global,:copy),nil,false,'18x18')
+delete_effect_code="new Effect.Highlight($('#{wrapper_id}').ancestors()[0],{duration:0.5});" 
+-%>
+<div id='<%=wrapper_id%>'>	
+  <div id="TodasItem">
+    <table width="575" border="0" cellspacing="5" cellpadding="0">
+      <tr >        
+           <td width="60" valign="top" align="left">		  	
+            <%=link_to_remote_redbox copy_icon,
+            :url=>{:controller=>'task_lists',:action=>'copy_dialog',:id=>task_list_item.id} -%>
+			
+			<% if write_access %>  
+	            <%=link_to_remote delete_icon,
+	            :url=>{:controller=>'task_lists',:action=>'delete',:id=>task_list_item.id},
+				:confirm=>local_html(:global,:delete_confirmation),
+	            :complete => "#{delete_effect_code}",
+	            :success => "#{delete_effect_code};$('#{wrapper_id}').remove();$('tab_wrapper_for_list_#{task_list_item.id}').remove()"     
+	            -%>			
+				<%complete_id="complete_check_for_#{task_list_item.id}"
+				 locked_icon="<span id='#{complete_id}'>" + get_locked_icon(task_list_item.closed?) + "</span>"	
+				%>
+				<%=link_to_remote locked_icon, :url=>{:controller=>'task_lists',:action=>'toggle_closed',:id=>task_list_item.id}%>
+			<%end -%>
+			<br/>
+		  </td>       
+ 		  <td>
+		  	<%= render :partial=>'editable_name_and_tags', :locals=>{:current_task_list=>task_list_item, :linked_list=>true} %>		  
+		  </td>
+      </tr>
+    </table>
+  </div>
+</div>

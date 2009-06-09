@@ -1,0 +1,42 @@
+<%= render :partial => 'tour_menu'%>
+
+<div id="highlightareaTour1">
+  <div id="highlightareaTour2">
+    <%= video_tag 'll.flv', 744, 510 %>
+  </div>
+  
+  <div id="textareaTour">
+    <span class="Title18DarkGrey">Los elementos más importantes de LISTAgem</span>
+    <br />
+    
+    <div class="Text13Grey">
+     Los elementos más relevantes de <%= APP_NAME %> son:
+      <ul>
+        <li>
+          <strong>Tus listas:</strong> 
+          Que puedes crear, cambiar, copiar, borrar, compartir, enviar por mail, etc.
+        </li>
+        <li><strong>Comparte tus listas:</strong>
+          Si quieres, mediante enlaces seguros podrás dar acceso a otras personas a tus listas.
+		  Podrán ver, o modificar tus listas dependiendo del permiso que les hayas otorgado.
+		  Y si crees que puede ser de interés general, ponla como pública y todo el mundo podrá 
+		  ver la lista no modificarla.
+        </li>
+		<li><strong>Envía tus listas por mail:</strong>
+          Si quieres, podrás enviar tus listas a otras personas.
+        </li>
+		<li><strong>Suscripción RSS:</strong>
+          Cuando compartes una lista con otras personas, podrás suscribirte mediante RSS para recibir 
+		  dichos cambios en tu lector de RSS
+        </li>
+		<li><strong>Etiquetas</strong>
+          Pon etiquetas a tus listas y de esta forma podrás realizar las busquedas rápidamente
+		  Si estas listas las compartes como públicas, las etiquetas ayudarán al resto de los usuarios
+		  a localizarlas
+        </li>
+      </ul>
+    </div>
+    
+    <%= registrate_gratis %>
+  </div>
+</div>

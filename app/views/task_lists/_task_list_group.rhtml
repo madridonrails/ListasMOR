@@ -1,0 +1,30 @@
+<%
+title||=''
+task_list||=[]
+display_if_empty||=false
+display_add_icon||=false
+empty_div_name ||= 'default_empty_div'
+%>
+<% if !task_list.empty? || display_if_empty -%>
+	<div class="Title16Orange" id="TodasTitulo">
+	<%=title%>
+	</div>
+	
+	<%if task_list.empty?-%>	 
+	  <div id='<%=empty_div_name%>'>	 
+		  <div id="TodasItem">
+		    <table width="575" border="0" cellspacing="5" cellpadding="0">
+		      <tr>        
+		          <td class="Link14Greybold"><%=local_html(:task_list,:no_task_lists_found)%></td>        
+		      </tr>
+		    </table>
+		  </div>		
+     </div>
+	<%else -%>
+	  <div id='<%=empty_div_name%>' style='display:none'></div> 
+	  <div id='<%= div_for_lists %>'>
+	  <%= render :partial => 'task_list_item', :collection => task_list%>	
+	  </div>
+	<%end -%>
+
+<%end -%>

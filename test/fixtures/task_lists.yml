@@ -1,0 +1,14 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+test_list:
+  id: 1
+  user_id: 1
+  name: test_list
+  updated_at: 2007-02-05 18:33:14 +01:00
+  public: 0
+
+test_list_2:
+  id: 2
+  user_id: 1
+  name: test_list_2
+  updated_at: 2007-02-05 18:33:14 +01:00
+  public: 0

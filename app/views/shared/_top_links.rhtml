@@ -1,0 +1,20 @@
+<div id="topLinks" class="Text13Grey">
+  <span class="Title18Grey"><%=local_html(:side_menu,:title)%></span>
+  <br /><br />
+  
+	<%if (@task_list) -%>  
+    <% icon = image_tag 'icon-list.gif', :width => 25, :height => 20 %>
+    <%= link_to local_html(:side_menu, :task_lists_feed), :controller => 'feeds', :action => 'list', :id=>@task_list.id, :token=>@task_list.token %>
+		<br />
+  <%end -%>
+  
+  <%if (logged_in?) -%>
+	  <% icon = image_tag 'icon-listC.gif', :width => 25, :height => 20 %>
+	  <%= link_to local_html(:side_menu, :user_lists_feed), :controller => 'feeds', :action => 'user_lists', :id=>current_user.id %>
+	  <br />
+	<%end -%>  
+  <br />
+  
+</div>
+
+<div id="bottLinks"></div>

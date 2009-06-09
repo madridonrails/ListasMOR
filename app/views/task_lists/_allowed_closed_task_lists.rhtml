@@ -1,0 +1,7 @@
+	<%unless @only_open_lists%>
+	<%=render :partial=>'task_list_group', 
+	          :locals=>{:task_list=>@allowed_closed_lists, 
+	          			:title=>local_html(:task_list,:allowed_closed_lists),
+						:div_for_lists=>'allowed_closed_lists'}
+	-%>
+	<%end #unless only_open_lists -%>

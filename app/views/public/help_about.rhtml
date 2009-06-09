@@ -1,0 +1,71 @@
+﻿<div class="Title24Orange" id="titlearea">
+  <%= link_to 'Ayuda', :action => 'help', :section => nil %>
+  <span class="Text18Orange">&gt;</span>
+  Acerca de <%= APP_NAME %>
+</div>
+
+<div id="highlightareaAyuda">
+  <div id="textareaAyuda">
+    <div class="Text13Grey HelpItem">
+	    <span class="Title18OrangeHelp" name="como_nace">¿Cómo nace <%= APP_NAME %>?</span> 
+      <%= ir_al_principio %>
+	    <%= help_answer_separator %>
+      <%= APP_NAME %> es el resultado de la necesidad de compartir listas de una forma intuitiva. Crear y compartir
+	  listas es rápido y sencillo con <%= APP_NAME %>. Éste era uno de los objetivos clave de diseño del
+	programa y hemos puesto todo nuestro empeño en conseguirlo. 
+    </div>
+ <br /> 
+    <div class="Text13Grey HelpItem">
+      <span class="Title18OrangeHelp" name="asp">¿Qué es un ASP?</span>
+      <%= ir_al_principio %>    
+	    <%= help_answer_separator %>
+      ASP son las siglas de &laquo;Application Service Provider&raquo;, en castellano
+      ( proveedor de aplicaciones como servicios), y describe aquellas
+      aplicaciones informáticas que son utilizadas por los clientes como un servicio.
+      Sus ventajas fundamentales son:
+      <!-- override the naked style inherited at this point for lists -->
+      <ul>
+        <li>No hay inversión.</li>
+        <li>Sin instalación: tú te olvidas y nosotros nos encargamos de toda la parte técnica.</li>
+        <li>Sin mantenimiento: sigue olvidándote de los detalles, nosotros nos ocupamos.</li>
+        <li>Modelo en red de acceso: disfruta de la ventajas de las aplicaciones en la red, 
+        accesible en cualquier momento, desde cualquier ordenador, sólo necesitas un navegador.
+        </li>
+      </ul>
+    </div>
+    <br />
+    <div class="Text13Grey HelpItem">
+      <span class="Title18OrangeHelp" name="demo">¿Puedo ver una demo?</span> 
+      <%= ir_al_principio %>    
+	    <%= help_answer_separator %>
+      Pues casi mejor que una demo <%= link_to 'REGÍSTRATE GRATIS', :action => 'signup' %> y usa la aplicación entera.
+    </div> 
+    <br />
+    <div class="Text13Grey HelpItem">
+      <span class="Title18OrangeHelp" name="cuanto_cuesta">¿Cuánto cuesta?</span>
+      <%= ir_al_principio %>          
+      <%= help_answer_separator %>
+	<%= APP_NAME %> es una aplicación gratuita, no es necesario realizar ningún pago para su uso
+    </div>    
+    <br />
+    <div class="Text13Grey HelpItem">
+      <span class="Title18OrangeHelp" name="puedo_usar">¿Puedo usar <%= APP_NAME %> sin estar en España?</span>
+      <%= ir_al_principio %>
+	    <%= help_answer_separator %>
+      Sí, puedes usar la aplicación desde cualquier lugar. 
+    </div> 
+       <br />
+    <div class="Text13Grey HelpItem">
+      <span class="Title18OrangeHelp" name="cuanto_tiempo">¿Cuánto tiempo guardáis mis listas?</span>
+      <%= ir_al_principio %>
+	    <%= help_answer_separator %>
+	    Siempre, salvo que tú indiques lo contrario. Tus listas estarán guardadas en nuestros
+	    servidores hasta que tú decidas que las borremos, o lo hagas tú mismo a través de la
+	    aplicación. Siempre de acuerdo con la legislación vigente.
+	  </div>
+	  <br />
+	  <%= date_una_vuelta_o_registrate %>
+  </div>  
+</div>
+
+

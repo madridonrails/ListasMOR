@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+<% 
+EMAIL_FOO = "foo@bar.com" unless defined?(EMAIL_FOO)
+SALT_FOO = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{EMAIL_FOO}--") unless defined?(SALT_FOO)
+%>
+foo: 
+  id: 1
+  first_name: Foo
+  last_name: Bar
+  email: <%=EMAIL_FOO%>
+  crypted_password: <%= User.encrypt('test', SALT_FOO) %> 
+  salt: <%=SALT_FOO%>
+  updated_at: 2007-02-05 18:33:14 +01:00

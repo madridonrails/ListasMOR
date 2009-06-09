@@ -1,0 +1,19 @@
+xml.instruct!
+  xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
+  xml.channel do
+    xml.title @title.blank? ? 'Listas Gem' : @title
+    xml.link url_for(:only_path => false, :controller => 'task_lists' , :action => 'list' )
+    xml.pubDate CGI.rfc1123_date((@items.first.pubDate rescue Time.now))
+    xml.description @description.blank? ? 'Listas Gem' : h(@description) 
+    @items.each do |item|
+      xml.item do
+        xml.title item.title        
+        xml.link item.link
+        xml.description h(item.description)
+        xml.pubDate CGI.rfc1123_date(item.pubDate)
+        xml.guid(item.guid,:isPermaLink=>item.isPermaLink)
+        xml.author h(item.author)
+      end
+    end
+  end
+end

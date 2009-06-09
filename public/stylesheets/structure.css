@@ -1,0 +1,271 @@
+html, body {
+	margin: 0px;
+	padding: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	background-color: #EAEAEA;
+        color:#1D242F;
+}
+
+body {
+	font-family: Arial, Verdana, sans-serif;
+}
+
+
+a{text-decoration:none;}
+
+img {border:0px;}
+
+
+
+/* ------- MAIN STRUCTURE STYLES ------- */
+
+#main{width:1000px; height:100%; margin-left:auto; margin-right:auto;background-color:#cccccc;}
+
+
+
+#header{width:1000px; height:97px; background-color:#31363E; clear:both; border-top: 10px solid #1D242F;}
+#headerleft { width:250px; padding-left:25px; padding-top:10px; float:left; overflow:visible}
+#headerright { width:275px; float:right; text-align:right; padding-top:10px; padding-right:15px; background-color:#FFFFFF;}
+#headermenu { width:1000px;  height:32px; clear:left; text-align:center; background-color:#31363E; background-image:url(../images/bg-hor-menu.gif)}
+#content{width:1000px; height:100%;  margin-bottom:20px; clear:left; margin-top:2px; }
+#contentTitle{width:600px; height:40px; clear:left; padding-top:20px; padding-left:20px; background-color:#EAEAEA;}
+#foot{width:980px; height:22px; padding:10px;  clear:both; /*border-top: 1px solid #FFFFFF;*/ text-align:center; background-image:url(../images/bg-foot.gif); background-repeat: repeat-x;}
+
+#column1{width:920px;    margin-top:12px; margin-bottom:20px;  margin-left:20px; margin-right:5px; float:left; /*border: 1px solid #999999;*/}
+#column2{width:300px;   margin-top:12px;   margin-bottom:20px;  margin-left:5px;  margin-right:30px; float:right; /*border: 1px solid #999999;*/}
+
+
+
+/* ------- TAREA STRUCTURE STYLES ------- */
+
+/* begin css tabs */
+#tabnav {
+  height:30px;
+  float:none;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:14px;
+  line-height:22px;
+}
+#tabnav ul {
+  margin-left:250px;
+  padding:0px 0px 0px 0px;
+  list-style:none;
+}
+#tabnav li {
+  float:left;
+  background:url("/images/pest_left.gif") no-repeat left top;
+  margin:0;
+  padding:0 10px 0 7px;
+  margin-left: 1px;
+}
+#tabnav a {
+  float:left;
+  display:block;
+  background:url("/images/pest_right.gif") no-repeat right top;
+  background-color:#EBEBEB;
+  padding:4px 10px 4px 10px;
+  text-decoration:none;
+  font-weight:bold;
+  color:#071621;
+}
+/* Commented Backslash Hack
+   hides rule from IE5-Mac \*/
+#tabnav a {float:none;}
+/* End IE5-Mac hack */
+#tabnav a:hover {
+  color:#1D242F;
+}
+#tabnav #current {
+  background-image:url("/images/pest_left_on.gif");
+}
+#tabnav .current {
+  background-image:url("/images/pest_left_on.gif");
+}
+#tabnav a.active {
+  background-image:url("/images/pest_right_on.gif");
+  background-color:#FFFFFF;
+  color:#1D242F;
+  padding-bottom:5px;
+}
+	
+#tabtag {
+  height:30px;
+  float:none;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:14px;
+  line-height:22px;
+}
+#tabtag ul {
+  margin-left:250px;
+  padding:0px 0px 0px 0px;
+  list-style:none;
+}
+#tabtag li {
+  float:left;
+  background:url("/images/pest_left.gif") no-repeat left top;
+  margin:0;
+  padding:0 10px 0 7px;
+}
+#tabtag a {
+  float:left;
+  display:block;
+  background:url("/images/pest_right.gif") no-repeat right top;
+  background-color:#EBEBEB;
+  padding:5px 15px 4px 6px;
+  text-decoration:none;
+  font-weight:bold;
+  color:#071621;
+}
+/* Commented Backslash Hack
+   hides rule from IE5-Mac \*/
+#tabtag a {float:none;}
+/* End IE5-Mac hack */
+#tabtag a:hover {
+  color:#1D242F;
+}
+#tabtag .active {
+  background-image:url("/images/pest_left_on.gif");
+}
+#tabtag a.active{
+  background-image:url("/images/pest_right_on.gif");
+  background-color:#FFFFFF;
+  color:#1D242F;
+  padding-bottom:5px;
+}
+/* end css tabs */
+
+
+#ListArea{width:578px; clear:left; background-color:#FFFFFF; padding:20px; border-left: 1px solid #D2D0C9; border-right: 1px solid #D2D0C9; border-bottom: 1px solid #D2D0C9;}
+#TagArea{width:278px; clear:left; background-color:#FFFFFF; padding:10px; margin-bottom:15px; border-left: 0; border-right: 1px solid #D2D0C9; border-bottom: 1px solid #D2D0C9;}
+#GoogleAd{width:298px; clear:left; background-color:#FFFFFF;border: 1px solid #D2D0C9; overflow:hidden;}
+#bottomAd{width:300px; clear:left; margin-top:15px;}
+
+#Tags{width:520px; clear:left; background-color:#FFFFFF; margin-bottom:20px;}
+#NewTask{width:520px; clear:left; background-color:#FFFFFF; margin-bottom:20px;}
+
+#ListMenuArea{width:578px; clear:left; background-color:#FFFFFF; margin-bottom:20px;}
+#ListBox{width:505px; min-height:170px; clear:left; background-color:#FFFFFF; border: 1px solid #D2D0C9; padding:10px;  margin-bottom:20px;}
+#IconBox{width:535px; background-color:#EFEFEF; border: 1px solid #D2D0C9; padding:0px;  margin-bottom:20px; min-height:30px;}
+
+#ListItem{width:500px; clear:left; padding-bottom:5px; padding-top:5px;}
+#IconItem{ padding: 4px; float:left;}
+
+#TodasTitulo{width:578px; clear:left; padding-bottom:10px; padding-top:15px; border-bottom: 1px solid #F3F1E9;}
+#TodasTitulo2{width:578px; clear:left; padding-bottom:10px; padding-top:25px; border-bottom: 1px solid #F3F1E9;}
+
+#TodasItem{width:578px; clear:left; padding-bottom:0px; padding-top:0px; border-bottom: 1px solid #F3F1E9;}
+
+
+#TodasListasItem li
+	{
+		margin: 0; 
+		padding: 0;
+  		display: inline;
+  		list-style-type: none;
+  	}
+
+
+/* -- custom styles -- */
+
+div.popup_dialog {min-height:200px;min-width:300px;padding:15px;}
+
+
+
+/* ------- RESULTS TABLE STYLES ------- */
+#FacturaDatos{height:inherit;  clear:left; margin-left:20px; margin-right:20px; border: 1px solid #EBEBEB; }
+
+tr.table-row-head {
+    background-color: #CCCAC4;
+}
+
+tr.table-row-even {
+    background-color: #FFFFFF;
+}
+
+tr.table-row-odd {
+    background-color: #F3F1E9;
+}
+
+
+/* --- pagination --- */
+
+.pagination {
+    padding: 10px;
+    margin: 3px;
+  }
+  .pagination a {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    border: 1px solid #aaaadd;
+    text-decoration: none;
+    color: #000099;
+  }
+  .pagination a:hover, .pagination a:active {
+    border: 1px solid #000099;
+    color: #000;
+  }
+  .pagination span.current {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    border: 1px solid #000099;
+    font-weight: bold;
+    background-color: #000099;
+    color: #FFF;
+  }
+  .pagination span.disabled {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    border: 1px solid #eee;
+    color: #ddd;
+  }
+
+
+
+
+
+/* ------- PUBLIC WEB STYLES ------- */
+#header2{width:1000px; height:117px; background-color:#ffffff; clear:left; border-top: 10px solid #EF7102;  border-bottom: 3px solid #cccccc;}
+#headerright2 { width:650px; float:right; text-align:right; padding-top:30px; padding-right:15px; background-color:#ffffff;}
+
+#highlightarea{width:1000px; padding-top:20px; padding-bottom:20px; margin-top:0px; background-color:#F4F4F4; clear:left; border-top: 0px solid #999999;  border-bottom: 0px solid #999999;}
+#cleararea{width:800px; text-align:center; margin-left:100px; margin-right:100px;  padding-top:10px; clear:left;}
+#highlightarea2{width:620px; height:auto; padding-bottom:20px; background-color:#FFFFFF; clear:left; border-top: 3px solid #999999;  border-bottom: 3px solid #999999;}
+#highlightarea3{width:1000px; height:605px; padding-top:10px; padding-bottom:20px; margin-top:20px; background-color:#FFFFFF; clear:left; border-top: 3px solid #999999;  border-bottom: 3px solid #999999;}
+#highlightarea4{width:500px; height:40px; padding-top:5px; background-color:#FFFFFF; clear:left; border-bottom: 3px solid #999999;}
+
+#titlearea{width:800px; clear:left; padding-top:30px; padding-bottom:0px; padding-left:100px;}
+#textarea{width:800px; clear:left; padding-top:0px; padding-bottom:10px; padding-left:100px;}
+#textareaRegister{width:500px; clear:left; padding-top:0px; padding-bottom:10px; padding-left:20px;}
+#textareaLeft{width:500px;  padding-top:0px; float:left; padding-bottom:10px; padding-left:0px;}
+#textareaRight{width:250px;  padding-top:0px; float:right; padding-bottom:10px; padding-left:0px;}
+#divider{width:500px; height:1px; float:left; margin-bottom:10px; margin-top:3px; background-color:#999999;}
+#topPackage{width:213px;  height:290px; text-align:center; margin-top:10px; padding-top:5px; padding-left:12px; padding-right:10px; clear:left; background-image:url(../images/topPackage.gif); background-repeat:repeat-y;}
+#topPackage2{width:213px;  height:260px; text-align:center; margin-top:10px; padding-top:5px; padding-left:12px; padding-right:10px; clear:left; background-image:url(../images/topPackage.gif); background-repeat:repeat-y;}
+
+#bottPackage{width:235px; height:20px;  clear:left; background-image:url(../images/bottPackage.gif)}
+#highlightareaTour1{width:1000px; padding-top:10px; padding-bottom:20px; margin-top:20px; background-color:#F4F4F4; clear:left; border-top: 3px solid #999999;  border-bottom: 3px solid #999999;}
+#highlightareaTour2{width:760px; padding:20px; margin-left:auto; margin-right:auto; margin-top:15px; background-color:#EBEBEB; clear:left; border: 3px solid #999999; text-align:center;}
+#textareaTour{width:800px;  margin-left:auto; margin-right:auto; margin-top:15px; clear:left;}
+#menuTour{width:915px; padding-top:5px; padding-left:85px; padding-bottom:5px; margin-top:10px; clear:left; background-color:#FFFFFF}
+#highlightareaAyuda{width:1000px; padding-top:10px; padding-bottom:10px; margin-top:20px; background-color:#F4F4F4; clear:left; border-top: 3px solid #999999;  border-bottom: 3px solid #999999;}
+#textareaAyuda{width:800px;  margin-left:120px; margin-top:5px; clear:left;}
+
+/* ------- HELP SUBJECTS ------- */
+.HelpItem {width:800px;   margin-top:15px; clear:left;}
+
+
+.Title24Orange{
+text-align:left;
+font-size:24px;
+font-weight:bold;
+color:#EF7102;
+line-height:20px;
+}
+.Title24Orange a {color:#E77E19; text-decoration:underline;}
+.Title24Orange a:link{color:#E77E19; text-decoration:underline;}
+.Title24Orange a:hover{ color:#1D242F; padding-bottom: 0; margin-bottom:0;}	
+
+td {
+    padding: 5px 5px 5px 5px;
+}

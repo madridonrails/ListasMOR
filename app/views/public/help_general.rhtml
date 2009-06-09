@@ -1,0 +1,39 @@
+﻿<div class="Title24Orange" id="titlearea">
+  <%= link_to 'Ayuda', :action => 'help', :section => nil %>
+  <span class="Text18Orange">&gt;</span>
+  Funcionalidad general
+</div>
+<div id="highlightareaAyuda">
+  <div id="textareaAyuda">
+    <div class="Text13Grey HelpItem" >
+      <span class="Title18OrangeHelp" name="direcciones">&iquest;Qu&eacute; browsers se pueden usar con <%= APP_NAME %>?</span>
+      <%= ir_al_principio %>
+	    <%= help_answer_separator %>
+      <%= APP_NAME %> recomienda el uso de
+      <a href="http://www.mozilla-europe.org/es/products/firefox/" alt="Firefox">Firefox</a>,
+      pero también está probada con Internet Explorer 6 y 7, y con Safari 2 y 3 para Mac.
+      Nuestras pruebas con Opera, Konqueror y Epiphany han sido satisfactorias, pero no son
+      navegadores soportados por el momento.
+    </div>
+<br />
+   
+    <div class="Text13Grey HelpItem">
+      <span class="Title18OrangeHelp" name="direcciones">¿Pueden otras personas ver mis listas sin contraseña?</span>
+      <%= ir_al_principio %>
+	    <%= help_answer_separator %>
+    Podrás compartir las listas con quien desees. Si es un usuario de <%= APP_NAME %> se las mostrará en la
+	sección de listas compartidas, en caso contrario le envíara una url de acceso
+	Podrás dar persmisos de escritura o solo de lectura según lo desees.
+    </div>
+<br />    
+<div class="Text13Grey HelpItem">
+      <span class="Title18OrangeHelp" name="direcciones">¿Puedo enviar las listas por correo?</span>
+      <%= ir_al_principio %>
+	    <%= help_answer_separator %>
+    Podrás enviarla por correo a ti mismo o a otras personas. Otra opción que teneis es realizar una 
+	suscripción al RSS de esta lista y recibir cada vez que su produzca un cambio el mensaje correspondiente
+    </div>
+<br />    
+    <%= date_una_vuelta_o_registrate %>
+  </div>
+</div>

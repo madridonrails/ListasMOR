@@ -1,0 +1,221 @@
+# Spanish Language Strings
+# Please remember the encoding of this file should *ALWAYS* be utf-8
+# When modifying this file, don't use the tab key. Use spaces for indenting any string
+
+# Keep the words delimited by % unchanged. They are only meant as placeholders and will be dynamically changed on execution
+# example with placeholders for params (you can change the max_length depending on the length of the text)
+# login_text: Usuario %my_user,max_length_including_trailing_dots% es incorrecto y %prueba%
+
+# If the text you are entering contains : or any other especial characters, enclose the string between double quotes "
+#example
+#title: "MiRubi.com : My Network"
+
+#For multiline strings just write in the new line keeping the indentation. If you need to quote a multiline String put
+#a double quote before the first line and one after. If you want to force a line break when showing the text, type \n
+#example
+#introduction_text: "This is an example. This is an example. This is an example. This is an example. This is an example.
+#                   This is an example. This is an example. This is an example. This is an example. This is an example.
+#                   This is an example.\n
+#                   This is an example. This is an example. This is an example."
+
+
+
+ 
+menu:
+  home: Inicio
+  tour: Tour
+  help: Ayuda
+  contact: Contacto 
+  login: Login
+  task_lists: Listas  
+  search: Buscar
+  signup: Registro
+  users_list: usuarios
+  profile: Mis datos
+  logout: Desconectar
+
+side_menu:
+  my_tags: Mis Tags
+  all_tags: Todos
+
+profile:
+ edit_profile: Modificar perfil de usuario 
+ email: e-mail
+ email_confirmation: repite tu e-mail
+ password: contraseña
+ password_confirmation: repite tu contraseña
+ password_change: si no quieres modificar tu contraseña, deja estos campos en blanco
+ delete_account: borrar mi usuario
+ delete_confirmation: ¿Deseas borrar este usuario? Se perderá toda la información asociada
+     
+login:
+  title: Login
+  fill_in_the_form: "Rellena los campos a continuación para acceder a tu cuenta:" 
+  email: e-mail
+  email_confirmation: repite tu e-mail
+  password: contraseña
+  password_confirmation: repite tu contraseña
+  login_button: entrar
+  password_forgotten: olvidé mi contraseña  
+  login_failure: Por favor revise los datos de acceso.
+
+chpassword:
+  password_forgotten_alert: Se enviará un email con instrucciones al la dirección de email de contacto
+  mail_body: "Nos has indicado que has olvidado tu contraseña en Listasmor. Para crear una contraseña nueva,
+             visita el enlace que aparece a continuación. Si no has olvidado tu contraseña, no es necesario
+             que hagas nada"
+  mail_subject: Contraseña Olvidada
+  mail_form_header: "Escriba la dirección de e-mail con la que te registraste y recibirás un e-mail indicándole 
+                     las instrucciones para crear una nueva contraseña"
+  send_button: Aceptar
+  mail_error: Se produjo un error al enviar el mail. Por favor, inténtelo más tarde
+  mail_sent: "Se ha enviado un mail a la dirección indicada. Si no lo recibe en unos minutos, compruebe que
+              no haya sido marcado como SPAM en su buzón de correo electrónico"
+  new_password_header: Introduce tu nueva contraseña
+  password_error: Las contraseñas no pueden estar en blanco y deben ser iguales
+  
+task:
+  add_task: Añadir
+  new_task: Nombre
+  move_item: Mover
+  
+task_list:
+  new_list: Nombre
+  edit_list: Editar lista    
+  copy: Copiar lista
+  email_list: Enviar por mail
+  list_rss: RSS
+  share: Compartir lista
+  delete_list: Eliminar lista 
+  default_task_list_name: Mi Lista general
+  default_task_list_description: Lista de tareas creada automáticamente
+  my_open_lists: Mis Listas Activas
+  my_closed_lists: Mis Listas Cerradas
+  allowed_open_lists: Listas Activas en las que participo
+  allowed_closed_lists: Listas Cerradas en las que he participado
+  close: Cerrar 
+  no_task_lists_found: No hay ninguna lista
+  no_tasks_found: No hay ninguna tarea
+  add_list: Nueva Lista
+  name: Nombre
+  description: Descripción
+  public_access: Esta lista es de acceso público
+  restricted_access: Esta lista no es de acceso público  
+  tags_explanation: "Puedes asignar varios Tags (Categorías) a tu lista.\n\n
+                    Simplemente introduce tantos como quieras separados por comas"
+  copy_task_description: "Se creará una copia de esta lista. Escribe el nombre de tu nueva lista"
+  copy_list_prefix: Copia_de
+  send_email_button: Enviar e-mail
+  send_email_text: Texto del Mail
+  default_email_text: Este es el contenido de mi lista en LISTASmor
+  email_list_title: Enviar Lista por e-mail
+  address_list: Lista de Direcciones
+  email_list_description: "Puedes enviar esta lista a varias direcciones de email. Escribe tantas como quieras\n 
+                          separadas por comas o una en cada línea. Si quieres puedes personalizar el texto que\n
+                          se enviará junto a la lista\n"
+  share_list_title: Compartir Lista
+  invite_text_title: Texto del Mail
+  default_invite_text: "Te invito a utilizar mi lista en LISTASmor"
+  send_invites_button: Enviar invitaciones 
+  write_mode_checkbox: Permitir modificaciones a los usuarios invitados
+  public_access_checkbox: Permitir acceso público (sólo lectura) a esta lista
+
+search:
+  search_text: Texto a buscar
+  local_search: sólo mis listas
+  results: Resultados de la búsqueda
+  search: Buscar
+      
+footer:
+  title: LISTASmor versión Beta
+  about_us: Sobre Nosotros
+  contact: Contacto
+  copyright_text: "Copyright © 2009 ASPgems" 
+
+paginate:
+  next: siguiente
+  previous: anterior
+  
+mail:
+  email_list_subject: Envío de lista por e-mail desde LISTASmor
+  share_list_subject: Has sido invitado a compartir esta lista en LISTASmor
+  
+default_error_messages:
+  inclusion: no está incluído en la lista
+  exclusion: está reservado
+  invalid: no es un valor válido
+  confirmation: no encaja con la confirmación
+  accepted: debe ser aceptado
+  empty: no puede estar vacío
+  blank: no puede estar en blanco
+  too_long: demasiado largo (el máximo es %d caracteres)
+  too_short: demasiado corto (el mínimo es %d caracteres)
+  wrong_length: longitud incorrecta (debería ser %d caracteres)
+  taken: ya está ocupado 
+  not_a_number: no es un número               
+  error_translation: error  
+  errors_header: No se ha podido guardar la información enviada
+  errors_subheader: Se produjeron los siguientes errores
+  captcha_invalid_answer: La respuesta a la pregunta de control no es válida
+  disclaimer_unchecked: Debe leer y aceptar las condiciones de uso
+  password_invalid: La contraseña introducida es incorrecta
+  current_password_invalid: La contraseña actual introducida es incorrecta
+  
+   
+error_fields:
+  email: e-mail
+  email_confirmation: Confirmación de e-mail
+  password: Contraseña
+  password_confirmation: Confirmación de contraseña   
+
+                                       
+global:
+  month_names: Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre
+  day_names: Lunes Martes Miércoles Jueves Viernes Sábado Domingo
+  waiting_for_server: conectando... por favor, espera
+  create_account: Si aún no eres usuario de LISTASmor, crear tu propia cuenta es muy sencillo
+  delete_confirmation: ¿Seguro que deseas borrar? Se perderá toda la información asociada
+  accept_button: Aceptar
+  back: volver
+  close: cerrar
+  logo_title: "LISTASmor: listas de tareas fáciles"
+  delete: Eliminar
+  view: Ver
+  edit: Editar
+  ok: Aceptar
+  cancel: Cancelar
+  saving: guardando...
+  copy: Copiar
+  click_to_edit: Haz click para editar este campo
+  click_on_fields_to_edit: Haz click en el campo que quieras modificar
+  tags: Tags
+  name: Nombre
+  cancel_alert: "¿Deseas cancelar esta operación?"
+  anonymous_user_explanation: "Estás usando la aplicación como usuario anónimo. Si no visitas esta web en un mes, o si borras las cookies se perderá tu información. Además, sólo podrás utilizar tus listas en este ordenador. Registrarte en LISTASmor
+                              es muy fácil y tiene muchas ventajas."
+  signup: Regístrate en LISTASmor
+  login_if_user: "Si ya tienes un usuario puedes identifícate para usar la aplicación"
+  login: "Identificarme"    
+  email_click_to_visit: "Puedes acceder a LISTASmor pulsando en el siguiente enlace: "
+  mail_greeting: Agradecemos tu confianza en LISTASmor,
+  team_greeting: El equipo de LISTASmor
+  lock: cerrar
+  unlock: reabrir                            
+
+activation_mail:
+  subject: Alta de tu usuario en LISTASmor
+  mail_body: "¡Bienvenido a LISTASmor!"
+  mail_save: "Por favor, guarda este correo para usarlo como referencia por si olvidas esa dirección."
+        
+signup:
+  fill_in_the_form: Rellena el formulario para crear tu cuenta
+  signup_button: Registrarme
+    
+captcha:
+  question_1: ¿Cuál es el contrario de norte? (sur)
+  question_2: ¿Cuál es la capital de España? (Madrid)
+  question_3: ¿Cuál es la capital de Portugal? (Lisboa)
+  question_4: ¿Cuál es la capital de Italia? (Roma)
+  
+ 
+  

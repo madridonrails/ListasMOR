@@ -1,0 +1,68 @@
+<div class='popup_dialog'>
+	<span class='Title16Orange'><%=local_html(:task_list, :share_list_title)%></span><BR/><BR/>
+	<%form_remote_tag :url=>{:action=>'share'},:complete=>'RedBox.close()' do -%>
+	 <%=hidden_field_tag :id, @task_list.id%>
+	 <table width="500px;"  border="0" cellspacing="10" cellpadding="0" id="share_table"'>	
+	   <colgroup>
+	      <col width="20%">
+	      <col width="80%">
+	    </colgroup>
+      <tbody>
+		  <tr>
+			    <td class="Link14Grey" valign="top"><%=local_html(:task_list,:address_list)%></td>
+			    <td valign="top">
+			    	<%=text_area_tag :email_list, @task_list.task_list_users.map{|m|m.email}.join(', '), :cols=>'50', :rows=>'4', :class=>'TableOutline'%>			      			      
+			    </td>
+		  </tr>
+				
+  		<tr>
+		          <td class="Link14Grey" valign="top"><%=local_html(:task_list,:invite_text_title)%></td>
+		          <td valign="top">
+		            <%=text_area_tag :invite_text, local_text(:task_list,:default_invite_text), :cols=>'50', :rows=>'4', :class=>'TableOutline'%>                       
+		          </td>
+        </tr>
+		<tr>
+			<td colspan='2' class='Text12Grey'>
+				<%=check_box_tag('invite_to_write', "1", false, :disabled=>!@write_access) -%> 
+				<%=local_html(:task_list,:write_mode_checkbox)%>
+			</td>
+		</tr>
+		<tr>
+			<td colspan='2' class='Text12Grey'>		
+				<div id='public_access_wrapper'>		
+		  			<%=check_box_tag('public_access_check', "1", @task_list.public?, :disabled=>!@write_access) -%>
+					<%=local_html(:task_list,:public_access_checkbox)%>
+					<%if @write_access -%>
+						<%=observe_field 'public_access_check', 
+				        :url=>{:controller=>'task_lists',:action=>'toggle_public',:id=>@task_list.id},
+				        :complete => visual_effect(:highlight, 'share_table', :duration => 0.5)      
+				      -%>
+					<%end -%>  
+				</div>	  
+			</td>
+		</tr>
+				
+	  </tbody>
+	</table>
+	
+  <table width="500px;"  border="0" cellspacing="10" cellpadding="0">
+  	<tbody>
+	    <tr>
+	      <td width="50%" class="CellTablebuttonR" align="right">
+	        <%=submit_tag local_html(:task_list,:send_invites_button), :class=>'button'%>
+	      </td>
+		  	
+	      <td width="50%" class="CellTablebuttonL">	
+				 <%=button_to_function local_html(:global,:close), "RedBox.close(); ",
+            :class=>'button' 
+         -%>	        
+	      </td>
+	      
+	    </tr>
+		</tbody>
+  </table>
+				
+	<%end #form -%>
+
+
+</div>

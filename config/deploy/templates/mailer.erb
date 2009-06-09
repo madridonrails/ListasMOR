@@ -1,0 +1,16 @@
+# Configuration for SMTP.
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.default_charset = 'utf-8'
+ActionMailer::Base.default_content_type = 'text/html'
+# Don't care if the mailer can't send
+ActionMailer::Base.raise_delivery_errors = true
+
+ActionMailer::Base.server_settings = {
+  :address        => "localhost",    # Server
+  :port           => 25,    #
+  :domain         => "listasgem.com",     # Sender domain
+#  :authentication => :login,            # if needed, it can be :plain, :login, or :cram_md5
+#  :user_name      => "sistemas.mirubi.com",                # if needed
+#  :password       => "Supercoco9",                # if needed
+}
+

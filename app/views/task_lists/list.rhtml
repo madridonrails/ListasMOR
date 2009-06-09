@@ -1,0 +1,39 @@
+<%if !logged_in? || current_user.is_anonymous? -%>
+	<span class='Text12Grey'>
+	<%=local_html(:global,:anonymous_user_explanation)%> <%=link_to(local_html(:global,:signup),{:controller=>'account',:action=>'signup'})%><BR/><BR/>
+	<%=local_html(:global,:login_if_user)%> <%=link_to(local_html(:global,:login),{:controller=>'account',:action=>'login'})%><BR/><BR/>
+	</span>
+<%end -%>
+
+<%
+  list_effect=visual_effect(:highlight, "active_list_container", :duration => 0.5)	
+  remote_options={ 
+  :url=>{:controller=>'task_lists', :action=>'task_list_add'},
+  :update=>'active_list_container', :position=>:bottom,
+  :condition=>"!$('task_list_name').value.blank",  
+  :success => '$("active_list_empty_div").hide();$("task_list_name").value="";$("task_list_name").focus();'+list_effect,
+  :submit=>'new_list_form'}
+
+  form_remote_tag(remote_options.merge(:html=>{:id=>'new_list_form'}))do -%>
+<div id="NewTask">  
+  <span class="Title16Grey"><%=local_html(:task_list,:new_list)%></span> 
+	<%=text_field_tag :task_list_name, '', :size=>'50', :maxlength=>'250', :onKeyPress=>'return ajax_submit_on_enter(this,event)' -%>
+  <%=link_to_remote icon_with_text('icon-add.gif',local_html(:task_list,:add_list),nil),remote_options , {:class=>"Link12Grey"}
+ -%>
+</div>
+<%end #form -%>
+
+<%=javascript_tag 'window.setTimeout("$(\'task_list_name\').focus()",500)'%>
+
+<div id='active_list_container'>
+	<%= render :partial => 'active_task_lists' %>
+</div>
+<div id='allowed_active_list_container'>
+	<%= render :partial => 'allowed_active_task_lists' %>
+</div>
+<div id='closed_list_container'>
+	<%= render :partial => 'closed_task_lists' %>
+</div>
+<div id='allowed_closed_list_container'>
+	<%= render :partial => 'allowed_closed_task_lists' %>
+</div>

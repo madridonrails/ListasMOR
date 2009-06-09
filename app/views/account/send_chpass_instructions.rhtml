@@ -1,0 +1,30 @@
+    <p class="Link14Greybold"><%=local_html :chpassword, :mail_form_header%></p>
+    <p class="error"><%= flash[:notice]%></p>
+    <% form_tag :method=>:post do -%>
+    <table width="500" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="Title16Orange" ><%=local_html :login, :email%></td>
+      </tr>
+      <tr>
+        <td class="Text13Grey">
+          <%= text_field_tag 'email', params[:email], :autocomplete => 'on', :class => "formField" %>
+        </td>
+      </tr>
+    </table>
+
+    <br />
+    
+    <table width="500"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td>
+          <span class="CellTablebuttonL">
+            <%= submit_tag local_html(:chpassword, :send_button), :class => 'button' %>
+          </span>
+        </td>
+      </tr>
+    </table>
+    <% end %>
+
+        
+   	
+  

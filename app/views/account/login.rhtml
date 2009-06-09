@@ -1,0 +1,56 @@
+    <p class="Link14Greybold"><%=local_html :login, :fill_in_the_form%></p>
+    <p class="error"><%= flash[:notice]%></p>
+    <% form_tag do -%>
+    <table width="500" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="Title16Orange" ><%=local_html :login, :email%></td>
+      </tr>
+      <tr>
+        <td class="Text13Grey">
+          <%= text_field_tag 'email', params[:email], :autocomplete => 'on', :class => "formField" %>
+        </td>
+      </tr>
+    </table>
+    <br />
+    
+    <table width="500" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="Title16Orange" ><%=local_html :login, :password%></td>
+      </tr>
+      <tr>
+        <td class="Text13Grey">
+          <%= password_field_tag 'password', nil, :class => "formField" %>
+        </td>
+      </tr>
+    </table>
+
+    <br />
+
+    <table width="500"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td>
+          <span class="CellTablebuttonL">
+            <%= submit_tag local_html(:login, :login_button), :class => 'button' %>
+          </span>
+        </td>
+      </tr>
+    </table>
+    <% end %>
+
+    <br />
+
+    <table width="500"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="Text12Grey">
+          <%= link_to local_html(:login,:password_forgotten), {:action => 'send_chpass_instructions'} %>
+        </td>
+      </tr>
+	  <tr>
+        <td class="Text12Grey">
+          <BR/><%=local_html(:global,:create_account)%><BR/><%=link_to(local_html(:global,:signup),{:controller=>'account',:action=>'signup'})%><BR/>
+        </td>
+      </tr>
+    </table>
+    
+   	
+  

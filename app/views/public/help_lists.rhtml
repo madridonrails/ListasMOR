@@ -1,0 +1,41 @@
+﻿<div class="Title24Orange" id="titlearea">
+  <%= link_to 'Ayuda', :action => 'help', :section => nil %>
+  <span class="Text18Orange">&gt;</span>
+  Sobre las listas
+  </div>
+
+<div id="highlightareaAyuda">
+  <div id="textareaAyuda">
+    
+    <div class="Text13Grey HelpItem">
+      <span class="Title18OrangeHelp" name="compartir">¿Puedo compartir mis listas?</span>
+      <%= ir_al_principio %>
+	    <%= help_answer_separator %>
+      Puedes compartir tus listas con quien quieras. Si es un usuario de <%= APP_NAME %> tendrá acceso
+	  a ellas desde su sección de Listas Compartidas. Si no lo es le enviaremos una URL de acceso.
+	  Además podeis suscribiros al RSS para recibir mensajes con los cambios que se realicen en la
+	  lista que compartis
+    </div>
+<br />
+    <div class="Text13Grey HelpItem">
+      <span class="Title18OrangeHelp" name="publicas" >¿Puedo crear listas públicas?</span>
+      <%= ir_al_principio %>
+	    <%= help_answer_separator %>
+      Si crees que tu lista puede ser de interés para otras personas puedes compartirla como pública. 
+	  Los tags de esa lista, serán mostrados en la sección de Etiquetas en la pestaña de 'Todos', para
+	  que cualquiera que acceda a la web pueda localizarla facilmente
+    </div>
+<br />
+<div class="Text13Grey HelpItem">
+      <span class="Title18OrangeHelp" name="buscar" >¿Puedo buscar en las listas?</span>
+      <%= ir_al_principio %>
+	    <%= help_answer_separator %>
+      Podrás buscar en todas tus listas o en las tuyas y las públicas según lo desees. Antes de
+	  crear una lista, piensa que igual hay alguien que tiene una semejante y que probablemente 
+	  te pueda servir.
+    </div>
+<br />
+    
+    <%= date_una_vuelta_o_registrate %>
+  </div>
+</div>

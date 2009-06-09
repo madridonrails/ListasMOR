@@ -1,0 +1,7 @@
+<%=@email_text%><BR/>
+<BR/><BR/>
+<%=@task_list.name%><BR/>
+<%=@task_list.tag_list.blank? ? '' : "(#{@task_list.tag_list})<BR/>" %><BR/>
+<%@task_list.tasks.each do |task| -%>
+	<%=task.name%><BR/>
+<%end%>

@@ -1,0 +1,52 @@
+if @task_list.user == current_user
+  @closed_lists, @open_lists = current_user.separate_task_lists
+  if @task_list.closed?
+    if @open_lists.empty?
+      page.replace_html 'active_list_container', :partial => 'active_task_lists'
+    else
+      page.replace "div_for_task_list_#{@task_list.id}", ''
+    end
+    if @closed_lists.length == 1
+      page.replace_html 'closed_list_container', :partial => 'closed_task_lists'
+    else
+      page.insert_html :top, 'closed_lists', :partial => 'task_list_item', :locals=>{:write_access=>true, :task_list_item=>@task_list}
+    end
+  else
+    if @closed_lists.empty?
+      page.replace_html 'closed_list_container', :partial => 'closed_task_lists'
+    else
+      page.replace "div_for_task_list_#{@task_list.id}", ''
+    end
+    if @open_lists.length == 1
+      page.replace_html 'active_list_container', :partial => 'active_task_lists'
+    else
+      page.insert_html :bottom, 'active_lists', :partial => 'task_list_item', :locals=>{:write_access=>true, :task_list_item=>@task_list}
+    end
+  end
+else
+  @allowed_closed_lists, @allowed_open_lists = current_user.separate_allowed_task_lists
+  if @task_list.closed?
+    if @allowed_open_lists.empty?
+      page.replace_html 'allowed_active_list_container', :partial => 'allowed_active_task_lists'
+    else
+      page.replace "div_for_task_list_#{@task_list.id}", ''
+    end
+    if @allowed_closed_lists.length == 1
+      page.replace_html 'allowed_closed_list_container', :partial => 'allowed_closed_task_lists'
+    else
+      page.insert_html :top, 'allowed_closed_lists', :partial => 'task_list_item', :locals=>{:write_access=>true, :task_list_item=>@task_list}
+    end
+  else
+    if @allowed_closed_lists.empty?
+      page.replace_html 'allowed_closed_list_container', :partial => 'allowed_closed_task_lists'
+    else
+      page.replace "div_for_task_list_#{@task_list.id}", ''
+    end
+    if @allowed_open_lists.length == 1
+      page.replace_html 'allowed_active_list_container', :partial => 'allowed_active_task_lists'
+    else
+      page.insert_html :bottom, 'allowed_active_lists', :partial => 'task_list_item', :locals=>{:write_access=>true, :task_list_item=>@task_list}
+    end
+  end
+end
+page.visual_effect :highlight, "div_for_task_list_#{@task_list.id}", :queue => 'end'

@@ -1,0 +1,30 @@
+<div class='popup_dialog'>
+<BR/>
+	<span class='Title16Orange'><%=local_html(:task_list, :copy)%></span><BR/><BR/>
+	<span class='Link14Grey'><%=local_html(:task_list,:copy_task_description) -%></span>
+<BR/><BR/><BR/>
+<%
+ remote_options={ 
+  :url=>{:controller=>'task_lists', :action=>'task_list_copy'},		
+  :condition=>"$('new_task_name').value.strip().length!=0",
+  :complete => 'window.location.reload();',
+  :success => '$(active_list_empty_div).hide();',
+  :submit=>'copy_list_form'
+  }
+
+form_remote_tag(remote_options.merge(:html=>{:id=>'copy_list_form'})) do -%>
+
+	<%=hidden_field_tag :task_list_id, @task_list.id%>
+	<%=text_field_tag :new_task_name, local_text(:task_list,:copy_list_prefix)+'_'+@task_list.name, :size=>'85'%>
+<%end -%>
+
+<%=javascript_tag 'window.setTimeout("$(\'new_task_name\').focus()",500)'%>
+<BR/><BR/>
+	
+<%=link_to_remote icon_with_text('icon-add.gif',local_html(:task_list,:add_list),nil),
+	   remote_options, {:class=>"Link12Grey"}
+ -%>
+ &nbsp;&nbsp;&nbsp;&nbsp;<%=link_to_close_redbox local_html(:global,:cancel),{:class=>"Link12Grey"} -%>
+	
+<BR/>
+</div>

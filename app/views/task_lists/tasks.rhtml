@@ -1,0 +1,87 @@
+<%= link_to image_tag('close-tab.gif'),{:controller=>'task_lists',:action=>'deactivate',:id=>params[:id]},
+      :title=>local_html(:task_list,:close),:style=>"float:right;padding:0px; border-left: 0px"-%>                               
+
+<div id="Tags">
+	<%= render :partial=>'editable_name_and_tags', :locals=>{:current_task_list=>@task_list, :display_detail=>false} %>	
+</div>
+
+<%if @write_access 
+	sortable_code=sortable_element_js("open_task_ids", :handle=>'handle_me',:tag=>'div',:url => { :action => "tasks_reorder_update" })
+-%>
+<%
+  list_effect=visual_effect(:highlight, "ListBox", :duration => 0.5) 	
+  remote_options={ 
+  :url=>{:controller=>'tasks', :action=>'task_item_add', :task_list_id=>@task_list.id},
+  :update=>'open_task_ids', :position=>:top,
+  :condition=>"!$('task_name').value.blank",
+  :complete=> ';Sortable.destroy("open_task_ids");' + sortable_code,	  
+  :success => '$("div_if_empty").hide();$("task_name").value="";$("task_name").focus();'+list_effect,
+  :submit=>'new_task_form'}
+
+  form_remote_tag(remote_options.merge(:html=>{:id=>'new_task_form'}))do -%>
+
+	<div id="NewTask">	
+	  <%=text_area_tag :task_name, '', :rows=>'2', :cols=>'60', :onKeyPress=>'return ajax_submit_on_enter(this,event)' %>
+	  <%=link_to_remote icon_with_text('icon-add.gif',local_html(:task,:add_task),nil),remote_options , {:class=>"Link12Grey"} %>
+	</div>
+  <%end #form -%>
+
+  <%=javascript_tag 'window.setTimeout("$(\'task_name\').focus()",500)'%>
+<%end -%>
+
+
+<div id="ListMenuArea">	
+	
+	<div id="ListBox">
+		<%if @task_list.tasks.empty?-%>
+		  <div id='div_if_empty'><span class="Link14Grey"><%=local_html(:task_list,:no_tasks_found)%></span></div>
+		  <div id='open_task_ids'></div>
+		<%else -%>
+			<div id='div_if_empty' style='display:none'></div>
+			<% closed_tasks, open_tasks = @task_list.separate_tasks %>
+			<div id='open_task_ids'>
+				<%= render :partial => '/tasks/task_item', :collection => open_tasks, :locals=>{:write_access=>@write_access}%>
+			</div>
+			<hr size='1' width='90%' />
+			<div id='closed_task_ids'>
+				<%= render :partial => '/tasks/task_item', :collection => closed_tasks, :locals=>{:write_access=>@write_access}%>
+				<%if @write_access%>
+				<%=javascript_tag sortable_code %>			
+				<%end -%>
+			</div>				
+		<%end -%>				
+		
+  </div>
+  
+  <span class='Text12Grey' id='public_access_placeholder'><%=render :partial=>'public_access_info', :locals=>{:task_list=>@task_list}%></span>
+  
+  <div id="IconBox">
+  		<div id="IconItem" class="Link14Orange">
+				<%copy_icon=icon_with_text('icon-copy.gif',local_html(:task_list,:copy),nil,true,'18x18') -%>  
+	            <%=link_to_remote_redbox copy_icon,
+	            :url=>{:controller=>'task_lists',:action=>'copy_dialog',:id=>@task_list.id} -%>
+		</div>
+			
+		<%if @write_access -%>
+			<div id="IconItem" class="Link14Orange">
+				<%share_icon=icon_with_text('icon-share.gif',local_html(:task_list,:share),nil,true,'18x18') -%>  
+	            <%=link_to_remote_redbox share_icon,
+	            :url=>{:controller=>'task_lists',:action=>'share_dialog',:id=>@task_list.id} -%>
+			</div>
+		<%end -%>
+		
+		<div id="IconItem" class="Link14Orange">
+			<%email_icon=icon_with_text('icon-copy.gif',local_html(:task_list,:email_list),nil,true,'18x18') -%>  
+            <%=link_to_remote_redbox email_icon,
+            :url=>{:controller=>'task_lists',:action=>'email_dialog',:id=>@task_list.id} -%>
+		</div>
+		<div id="IconItem" class="Link14Orange">
+			<%=link_to icon_with_text('icon-rss.gif',local_html(:task_list,:list_rss),nil),:controller=>'feeds',:action=>'list',:id=>@task_list.id,:token=>@task_list.token -%>
+		</div>
+		<%=auto_discovery_link_tag(:rss, {:controller=>'feeds',:action=>'list',:id=>@task_list.id,:token=>@task_list.token}) %>		
+	</div>
+
+</div>
+
+
+

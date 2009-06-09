@@ -1,0 +1,19 @@
+<div id='list'>
+	<div id='FacturaDatos'>
+		<table width="100%">
+		  <colgroup>
+		    <col width="51%" />
+                    <col width="25%" />
+		    <col width="8%" />
+		    <col width="16%" />    
+		  </colgroup>
+		  <%= table_header_remote :labels => ['email','created_at', 'admin','&nbsp;'],:non_orderable=>[3] %>
+		  
+		  <%= render :partial => 'user', :collection => @users %>
+		</table>
+	</div>
+	
+		
+	<%= will_paginate @users, :prev_label=>local_html(:paginate,:previous),:next_label=>local_html(:paginate,:next) %>
+
+</div>

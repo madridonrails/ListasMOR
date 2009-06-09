@@ -1,0 +1,49 @@
+<div class='popup_dialog'>
+	<span class='Title16Orange'><%=local_html(:task_list, :email_list_title)%></span><BR/><BR/>	
+	<span class='Link14Grey'><%=local_html(:task_list, :email_list_description)%></span><BR/><BR/>
+	<%form_remote_tag :url=>{:action=>'email_list'},:complete=>'RedBox.close()' do -%>
+	 <%=hidden_field_tag :id, @task_list.id%>
+	 <table width="500px;"  border="0" cellspacing="10" cellpadding="0">	
+	   <colgroup>
+	      <col width="20%">
+	      <col width="80%">
+	    </colgroup>
+      <tbody>
+			  <tr>
+			    <td class="Link14Grey" valign="top"><%=local_html(:task_list,:address_list)%></td>
+			    <td valign="top">
+			    	<%=text_area_tag :email_list, current_user.email, :cols=>'50', :rows=>'4', :class=>'TableOutline'%>			      			      
+			    </td>
+			  </tr>
+				
+				<tr>
+          <td class="Link14Grey" valign="top"><%=local_html(:task_list,:send_email_text)%></td>
+          <td valign="top">
+            <%=text_area_tag :email_text, local_text(:task_list,:default_email_text), :cols=>'50', :rows=>'4', :class=>'TableOutline'%>                       
+          </td>
+        </tr>
+				
+	  </tbody>
+	</table>
+	
+  <table width="500px;"  border="0" cellspacing="10" cellpadding="0">
+  	<tbody>
+	    <tr>
+	      <td width="50%" class="CellTablebuttonR" align="right">
+	        <%=submit_tag local_html(:task_list,:send_email_button), :class=>'button'%>
+	      </td>
+		  	
+	      <td width="50%" class="CellTablebuttonL">	
+				 <%=button_to_function local_html(:global,:close), "RedBox.close(); ",
+            :class=>'button' 
+         -%>	        
+	      </td>
+	      
+	    </tr>
+		</tbody>
+  </table>
+				
+	<%end #form -%>
+
+
+</div>

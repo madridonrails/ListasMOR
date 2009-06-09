@@ -1,0 +1,69 @@
+<div class='popup_dialog'>
+<div id='errors_div' class='error'><span class='Title16Orange'><%=local_html(:profile, :edit_profile)%></span><BR/></div>
+	
+<BR/>
+
+<%form_remote_tag :url=>{:controller=>'users',:action=>'save_profile',:id=>@user.id,:div_name=>'errors_div'} do %>
+	<%=hidden_field :user,:id%>	
+	<table>
+		<tr>
+			<td>				
+				<span class="Title16Orange"><%=local_html(:profile,:email)%>:</span>
+			</td>
+			<td>	
+				<%=text_field :user,:email%>
+			</td>	
+		</tr>
+		<tr>
+			<td>
+				<span class="Title16Orange"><%=local_html(:profile,:email_confirmation)%>:</span>
+			</td>
+			<td>	
+				<%=text_field :user,:email_confirmation%>
+			</td>
+		</tr>		
+		<tr>
+			<td colspan='2'>		 
+				<BR/>
+				<span class='Link14Grey'><%=local_html(:profile, :password_change)%></span>
+				<BR/>
+			</td>	
+		</tr>	
+		<tr>
+			<td>		
+				<span class="Title16Orange"><%=local_html(:profile,:password)%>:</span>
+			</td>
+			<td>	
+				<%=text_field :user,:password%>
+			</td>	
+		</tr>	 
+		<tr>
+			<td>
+				<span class="Title16Orange"><%=local_html(:profile,:password_confirmation)%>:</span>
+			</td>
+			<td>	
+				<%=text_field :user,:password_confirmation%>
+			</td>	
+		</tr>
+	</table>		 
+	<BR/>
+	<BR/>
+		<%=submit_tag local_html(:global,:accept_button), :class=>'button'%>	  
+		<%=button_to_function local_html(:global,:cancel), 
+	            "if (confirm('#{local_html(:global,:cancel_alert)}')) RedBox.close(); ",
+	            :class=>'button' 
+	         -%>
+	<BR/><BR/>		 	
+	<%= link_to_remote local_html(:profile,:delete_account),
+	  { 
+	  :url=>{:controller=>'users', :action=>'delete_user', :id=>@user.id},		
+	  :confirm=>local_html(:profile,:delete_confirmation),
+	  :complete => 'window.location.reload();'
+	  
+	  } , {:class=>"Link12Grey"}
+	 -%>
+	 	         
+<%end -%>	
+	
+<BR/>
+</div>

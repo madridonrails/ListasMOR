@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-language" content="es" />
+    <meta name="copyright"    content="Copyright 2009 ASPgems" />
+    <meta name="description"  content="Lista de Tareas" />
+    <meta name="keywords"     content="hacer listas, listas, listas online, to do list, autonomo, autonomos, pymes, pyme, programa de listas" />
+    <meta name="robots"       content="index,follow" />
+    <meta name="language"     content="ES" />
+    <meta name="distribution" content="global" />
+    <meta name="abstract"     content="<%= APP_NAME %> es una aplicacion on-line con la que resulta muy sencillo crear y compartir tus listas de tareas" />
+
+    <title><%= APP_NAME %></title>
+  
+    <!-- favicon, following the guidelines in http://en.wikipedia.org/wiki/Favicon -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  
+    <%= stylesheet_link_tag 'structure', :media => 'all' %>
+    <%= stylesheet_link_tag 'type',      :media => 'all' %>
+	<%= stylesheet_link_tag 'redbox' %>
+    
+    <%= javascript_include_tag :defaults %>
+	<%= javascript_include_tag 'redbox' %>
+    <%= javascript_include_tag 'tooltip' %>
+  </head>
+
+		<body>
+		
+		<div id="main">
+		
+		
+		<div id="header2">
+		<div id="headerleft">
+			<%= application_logo_linked_to_home %>
+		</div>
+		<%if logged_in? && !current_user.is_anonymous?-%>
+                  
+		  <div id="headerright" class="toplinks">		  	    
+                    <%if is_admin_user? -%>
+                            <%= link_to(local_html(:menu,:users_list), :controller => 'users', :action => 'list') %>&nbsp;&nbsp;|&nbsp;&nbsp;
+                    <%end -%>
+                    <%=link_to_remote_redbox local_html(:menu,:profile),
+                    :url=>{:controller=>'users',:action=>'profile_dialog', :id=>current_user.id} -%>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+		    <%= link_to(local_html(:menu,:logout), :controller => 'account', :action => 'logout') %>
+                    <br /><!-- <img src="/images/logo-cathedral.gif" /> -->
+		  </div>
+		<%else%>
+			<div id="headerright2">
+	          <%=render :partial=>'shared/public_menu'%>
+	        </div>  
+		<%end -%>
+		</div>			
+		
+		<div id="content">
+		
+		<div id="column1">
+		<ul id="tabnav">
+		  <% if @current_action!='signup' -%>	
+		  <%if (!logged_in? || current_user.is_anonymous?) -%>  
+			  <li <%= "id=current" if @current_controller == 'account' && (@current_action == 'login')%>>			  
+			  	<%= link_to local_html(:menu,:login), {:controller => 'account', :action => 'login'},
+				:class=>(@current_controller == 'account' && @current_action!='signup' ) ? 'active' : '' %>
+			  </li>
+		  <%end -%>
+		
+			<%if logged_in? -%>
+                           <% (1..4).each do |ix|
+                           active_list=current_user.send("active_task_list_#{ix}")
+                        unless active_list.nil?
+                            tab_class=(@current_controller == 'task_lists' && @current_action == 'tasks' && 
+                            @task_list.id == active_list.id) ? 'active' : '5'
+                        -%>
+		   	  <script type="text/javascript">
+		   		  var task_list_<%= active_list.id %>_tooltip = '<%= active_list.name %>'
+                          </script>
+			  <div style="position: absolute; left: 0px; top: 10px; display: none;" id="tooltip<%=active_list.id%>" class="tooltip"></div>
+			  <li id="tab_wrapper_for_list_<%=active_list.id%>" <%='class="current"' if tab_class=='active'%> onmouseover='showDiv("active_tab_for_list_<%=active_list.id%>", "tooltip<%=active_list.id%>", task_list_<%= active_list.id %>_tooltip, "right", "bottom")' onmouseout='hideDiv("tooltip<%=active_list.id%>");'><%=link_to truncate(active_list.name,10),
+		                {:controller=>'task_lists', :action=>'tasks', :id=>active_list.id}, 
+		                :class=>tab_class,
+                                :id=>"active_tab_for_list_#{active_list.id}",
+                                :style=>"padding:4px 10px #{(tab_class=='active')?'5px':'4px'} 10px; margin:0px; border-right: 10px;float:left"
+		          -%>
+                          </li>
+			  	<%end -%>
+			  <%end -%>			
+			
+				<li <%= "id=current" if @current_controller == 'task_lists' && (@current_action == 'list')%>>
+                                    <%= link_to local_html(:menu,:task_lists), {:controller => 'task_lists', :action => 'list'},
+                                    :class=>(@current_controller == 'task_lists' && @current_action == 'list') ? 'active' : ''  
+                                    -%>
+				</li>
+			<%end  # if logged_in -%>
+		  <li <%= "id=current" if @current_controller == 'task_lists' && (@current_action == 'tag_search_results')%>>
+		  	<%= link_to local_html(:menu,:search), {:controller => 'task_lists', :action => 'tag_search_results', :show_last_resultset=>true},
+				:class=>(@current_controller == 'task_lists' && @current_action == 'tag_search_results') ? 'active' : ''  %>
+		  </li>
+		  <% else -%>
+		  
+		<% end -%>
+		</ul>
+                <% if @current_action=='signup' -%>
+                    <div id="contentTitle">
+                      <div class="Title24Orange" id="Titlearea">
+                        Crea GRATIS tu cuenta en <%= APP_NAME %> 
+                      </div>
+                    </div>
+                  <div id="highlightarea2">
+                    <%= yield %>
+                  </div>
+                <%else%>
+                  <div id="ListArea">
+                    <%= yield %>
+                  </div>
+                <%end%>
+		</div>
+        <% if false %>
+		<div id="column2">
+			 <%= render :partial => 'shared/right_content' %>
+		</div>
+		<% end %>
+		</div>
+		
+		
+		<div class="FooterText" id="foot">
+			<%= render :partial => 'shared/footer' %>
+		</div>
+		
+		
+		</div>
+		</body>
+</html>

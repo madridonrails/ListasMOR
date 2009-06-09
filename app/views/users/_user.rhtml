@@ -1,0 +1,15 @@
+<tr class="<%= cycle('table-row-even', 'table-row-odd') %>">
+  <td class="Text13Grey"><%= h user.email %></td>  
+  <td class="Text13Grey"><%= h user.created_at.to_formatted_s(:db) %></td>  
+  <td align="center">
+    <span id="span_admin_user_<%= user.id %>"><%= user_admin_toggler(user) %></span>
+  </td>
+  <td class="Text11Orange">
+  	<%=link_to_remote_redbox local_html(:global,:edit),
+            :url=>{:controller=>'users',:action=>'profile_dialog',:user_id=>user.id} -%>
+    | <%=link_to_remote local_html(:global,:delete),
+            :url=>{:controller=>'users',:action=>'delete_user',:id=>user.id},
+			:confirm=>local_html(:profile,:delete_confirmation) -%>
+	
+  </td>
+</tr>  

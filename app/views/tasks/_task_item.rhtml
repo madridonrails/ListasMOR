@@ -1,0 +1,72 @@
+	
+<%
+@task=task_item
+open=!@task.closed?
+wrapper_id="div_for_task_#{task_item.id}"
+reorder_icon=icon_with_text('mover.gif',local_html(:task,:move_item),nil,false,'14x14')
+complete_id="complete_check_for_#{task_item.id}"
+locked_icon="<span id='#{complete_id}'>" + get_locked_icon(task_item.closed?) + "</span>"
+delete_icon=icon_with_text('icon-eliminar.gif',local_html(:global,:delete),nil,false,'14x14')
+-%>
+<div id='<%=wrapper_id%>'>   	
+	<div id="ListItem" class="first">
+	  <table>
+        <%	
+		  edit_icon_id = "edit_icon_for_#{task_item.id}"
+	  	  edit_icon = icon_with_text('icon-edit.gif',local_html(:global,:edit),nil,false,'14x14', edit_icon_id)
+		  action_icons_id = "action_icons_for_#{task_item.id}"
+		  controls_id = "controls_for_#{task_item.id}"
+		  row_id = "row_for_#{task_item.id}"
+ 		  edit_handle_for_name_id = "edit_handle_for_name_#{task_item.id}"
+		  in_place_editor_id = "task_name_#{task_item.id}_in_place_editor"
+        -%>
+  		<tr id='<%= row_id %>'>  			  		
+	       <%if write_access -%>
+				<td width="500" valign='top'>
+					<span id='<%= controls_id %>'>
+						<span id='<%= action_icons_id %>' style='visibility: hidden'>
+							<span class='handle_me' <%= "style='visibility: hidden'" unless open %>><%=reorder_icon%></span>
+					  		<span id='<%=edit_handle_for_name_id%>' <%= "style='visibility: hidden'" unless open %>><%=edit_icon%></span>
+							<%=link_to_remote delete_icon,
+						      :url=>{:controller=>'tasks',:action=>'delete',:id=>task_item.id, :task_list_id=>task_item.task_list_id},
+						      :complete => visual_effect(:highlight, "ListBox", :duration => 0.5),
+						      :success => "$('#{wrapper_id}').remove()",
+							  :confirm => local_text(:global,:delete_confirmation)      
+						    -%>	
+						</span>
+						<span>
+							<%=link_to_remote locked_icon, :url=>{:controller=>'tasks',:action=>'toggle_closed',:id=>task_item.id , :task_list_id=>task_item.task_list_id} %>
+						</span>
+					</span>
+					<% if open -%>
+				    <span class="Link14Grey">
+					  <%=in_place_editor_field :task,:name, {:class=>"Link14Grey"},
+				      {
+				        :url=>url_for(:controller=>'tasks',:action=>'set_task_name',:id=>task_item.id, :task_list_id=>task_item.task_list_id),
+				        :rows=>2, :cols=>60, :click_to_edit_text=>local_text(:global,:click_to_edit),
+						:external_control=>edit_handle_for_name_id, :hide_controls=>controls_id, :invisible_controls=>action_icons_id,
+				        :save_text=>local_text(:global,:ok),:cancel_text=>local_text(:global, :cancel),:saving_text=>local_text(:global,:saving)
+				      }%>
+				    </span>
+					<% else -%>
+				    <span class="Text12Grey"><%= @task.name %></span>
+					<% end -%>
+				 </td>
+				<%else -%>
+				  <td>
+			  		<%=locked_icon%>
+					<% if open -%>
+					<span class='Link14Grey'><%=@task.name%></span>
+					<% else -%>
+				    <span class="Text12Grey"><%= @task.name %></span>
+					<% end -%>
+				  </td>	
+				<%end -%>					
+		</tr>
+		  <script type="text/javascript">
+			  Event.observe('<%= row_id %>', 'mouseover', function() { $('<%= action_icons_id %>').style.visibility='visible' });
+			  Event.observe('<%= row_id %>', 'mouseout', function() { $('<%= action_icons_id %>').style.visibility='hidden' });
+		  </script>
+	  </table>	    
+	</div>
+</div>

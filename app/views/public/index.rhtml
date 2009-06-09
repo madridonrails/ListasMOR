@@ -1,0 +1,88 @@
+<div id="highlightarea">
+    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="center" width="53%">
+          <p class="Title48DarkGrey">¡Crea tus listas!</p>
+          <p class="Text24Grey">La manera más fácil<br>
+        de crear y compartir<br>
+        tus listas de tareas</p>
+          <p class="TextHighlightOrange">
+            <%= link_to 'Date una vuelta', :action => 'tour' %>
+            o
+            <%= link_to 'Regístrate gratis', :action => 'signup' %>
+          </p>
+        </td>
+        <td width="47%">
+          <% img = image_tag "foto-principal.gif" %>
+          <%= link_to img, :action => 'tour' %>
+        </td>
+      </tr>
+    </table>
+</div>
+
+<div id="cleararea">
+  <table width="745" border="0" cellspacing="10" cellpadding="0">
+  <colgroup>
+  <col width="33%">
+  <col width="33%">
+  <col width="33%">
+  </colgroup>
+    <tr>
+      <td valign="top" align="left">
+        <%= image_tag "icon-arrow-hot.gif" %>
+        <span class="Title18DarkGrey">Crea tus listas</span>
+        <br />
+        <%= image_tag "detail-01.gif", :class => 'imgBorder01' %>
+        <span class="Title14Orange">Más fácil que el ABC... </span><br />
+		<span class="Text13Grey">
+          Con <%=APP_NAME%> podr&aacute;s crear y
+          compartir tus listas de la manera m&aacute;s
+          sencilla posible. Adem&aacute;s es una
+          herramienta online por lo que puedes
+          acceder, ver y modificar tus listas
+          desde cualquier lugar donde haya una
+          conexi&oacute;n a internet.<br>
+          <br>
+          &iexcl;<strong>Registrate en 10 segundos</strong> y empieza
+          a crear y compartir tus listas! es una
+          herramienta totalmente gratuita.
+        </span>
+		  </td>
+      <td valign="top" align="left">
+        <%= image_tag "icon-arrow-hot.gif" %>
+        <span class="Title18DarkGrey">Comparte tus listas </span>
+        <br />
+        <%= image_tag "detail-02.gif", :class => 'imgBorder01' %>
+		    <span class="Title14Orange">Compartir con quien  quieras...</span><br />
+        <span class="Text13Grey">
+          Adem&aacute;s con <%= APP_NAME %> podr&aacute;s:<br>
+          <img src="images/icon-arrow-list.gif" width="4" height="7"><strong> Compartir tus listas con quien tu
+          quieras</strong>, y permitir a estas personas
+          que a&ntilde;adan cosas a tus listas.<br><br>
+          <img src="images/icon-arrow-list.gif" width="4" height="7"> <strong>Hacer p&uacute;blicas tus listas</strong>, as&iacute; todo
+          el mundo podr&aacute; verlas y sugerirte que
+          incluyas m&aacute;s cosas para hacerla m&aacute;s
+          completa..
+        </span>		  </td>
+      <td valign="top" align="left">
+        <%= image_tag "icon-arrow-hot.gif" %>
+        <span class="Title18DarkGrey">Ejemplos de listas</span>
+        <br />
+        <%= image_tag "detail-03.gif", :class => 'imgBorder01' %>
+		    <span class="Title14Orange">&iquest;Qu&eacute; tipo de listas hacen los<br>
+		    usuarios de <%= APP_NAME %>?</span><br />
+        <span class="Text13Grey">
+          <strong>Aqu&iacute; tienes algunos ejemplos:</strong><br>
+          <%= image_tag "icon-arrow-list.gif", :width => '4', :height => '7' %> Lista de regalos de navidades<br>
+          <%= image_tag "icon-arrow-list.gif", :width => '4', :height => '7' %> Cosas que llevarme a la acampada<br>
+          <%= image_tag "icon-arrow-list.gif", :width => '4', :height => '7' %> Lista de asistentes a la boda<br>
+          <%= image_tag "icon-arrow-list.gif", :width => '4', :height => '7' %> Restaurantes que quiero conocer<br>
+          <%= image_tag "icon-arrow-list.gif", :width => '4', :height => '7' %> Pel&iacute;culas que quiero ver<br>
+		  <%= image_tag "icon-arrow-list.gif", :width => '4', :height => '7' %> Cosas que ver de viaje<br>
+		  <%= image_tag "icon-arrow-list.gif", :width => '4', :height => '7' %> Nombres favoritos...
+        </span>
+		</td>
+    </tr>
+  </table>
+</div>
+

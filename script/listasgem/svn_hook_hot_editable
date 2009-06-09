@@ -1,0 +1,20 @@
+#!/usr/bin/ruby
+require 'net/http'
+
+if ARGV.size != 2
+  puts "usage: svn_language_hook.rb REPOS_PATH RELEASE"
+  exit(-1)
+end
+
+SVN_PATH='/usr/bin'
+LISTENING_INSTANCES=[
+  {:host=>'www.larry2.aspgems.com',:port=>8002}  
+]
+
+changed_dirs=`#{File.join(SVN_PATH,'svnlook')} dirs-changed #{ARGV[0]} -r #{ARGV[1]}`
+
+unless changed_dirs.nil? || changed_dirs.split(/\n/).select{|dir| (dir=~ /trunk\/app\/hot_editable/) == 0}.empty?  
+  LISTENING_INSTANCES.each do |instance|    
+    Net::HTTP.get(instance[:host], "/public/__update_hot_editable", instance[:port])    
+  end
+end

@@ -1,0 +1,26 @@
+# Application name and domain name
+APP_NAME = 'LISTASgem'
+DOMAIN_NAME = 'listasgem.com'
+
+LocalText.default_language=:es #can be either string or symbol.Two letter code
+LocalText.listening_ports=[3000] #all running ports sharing config/languages directory (used for refreshing)
+
+HOST='localhost:3000'
+FROM_EMAIL='listasgem@aspgems.com'
+
+TAGS_TO_SHOW=50
+
+# Configuration of Google Analytics
+Rubaidh::GoogleAnalytics.tracker_id = 'UA-1234567-8'
+Rubaidh::GoogleAnalytics.domain_name = DOMAIN_NAME
+Rubaidh::GoogleAnalytics.environments = ['production']
+
+# Configuration of Exception Notifier
+ExceptionNotifier.exception_recipients = %w(development@myspecialweb.com) #E-mails
+ExceptionNotifier.email_prefix = "[#{APP_NAME}-ERROR] "
+
+# Contact emails
+CONTACT_EMAIL_INFORMATION = 'info@listasgem.com'
+CONTACT_EMAIL_ACCOUNTS = 'soporte@listasgem.com'
+CONTACT_EMAIL_LISTS = 'soporte@listasgem.com'
+CONTACT_EMAIL_OTHERS = 'soporte@listasgem.com'
